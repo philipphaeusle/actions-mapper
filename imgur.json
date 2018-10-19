@@ -1,0 +1,33 @@
+{
+  "generatedAction":{
+    "@type":"SearchAction",
+    "entryPoint":{"method":"POST", "target":"http://actions.semantify.it/"},
+    "object-input":{
+      "@type":"Image",
+      "name-input":"required"
+    },
+    "result-input":{"@type": "Image"}
+  },
+  "realTarget": {
+    "url": "http://imgur.com/search",
+    "method": "GET",
+    "header": {
+      "Content-type":"json"
+    }
+  },
+  "mapping":{
+    "input":{
+      "object.name": {
+        "type": "query",
+        "path":"q"
+      }
+    },
+    "output":{
+      "Event.metadata.name": {
+        "type": "body",
+        "path":"result.name"
+      }
+    }
+  }
+
+}

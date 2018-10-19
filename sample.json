@@ -1,0 +1,33 @@
+{
+  "generatedAction":{
+    "@type":"CreateAction",
+    "entryPoint":{"method":"POST", "target":"http://actions.semantify.it/"},
+    "object-input":{
+      "@type":"Event",
+      "name-input":"required"
+      },
+    "result-input":{"@type": "Event"}
+    },
+    "realTarget": {
+    "url": "http://eventbrite/events/create",
+    "method": "POST",
+    "header": {
+    "Content-type":"json"
+        }
+      },
+    "mapping":{
+    "input":{
+          "object.name": {
+            "type": "body",
+            "path":"event-name"
+          }
+        },
+    "output":{
+          "Event.metadata.name": {
+            "type": "body",
+            "path":"result.name"
+          }
+        }
+      }
+
+    }

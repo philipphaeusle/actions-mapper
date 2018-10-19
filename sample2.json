@@ -1,0 +1,51 @@
+{
+  "generatedAction":{
+    "@type":"SearchAction",
+    "entryPoint":{"method":"POST", "target":"http://actions.semantify.it/"},
+    "object-input":{
+      "@type":"Event",
+      "address":{
+        "PostalCode":"required"
+      },
+      "name-input":"required",
+      "height-input":"",
+      "size-input":"required"
+    },
+    "result-input":{"@type": "Event"}
+  },
+  "realTarget": {
+    "url": "http://eventbrite/events/search",
+    "method": "GET",
+    "header": {
+      "Content-type":"json"
+    }
+  },
+  "mapping":{
+    "input":{
+      "object.name": {
+        "type": "query",
+        "path": "q"
+      },
+      "object.address.PostalCode": {
+        "type": "body",
+        "path": "addrPostCode"
+      },
+      "object.size": {
+        "type": "query",
+        "path": "size"
+      },
+      "object.height": {
+        "type": "query",
+        "path": "height"
+      }
+    },
+    "output":{
+      "Event.metadata.name": {
+        "type": "body",
+        "path":"result.name"
+      }
+    }
+  }
+
+}
+

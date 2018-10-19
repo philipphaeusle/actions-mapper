@@ -1,0 +1,40 @@
+{
+  "generatedAction":{
+    "@type":"SearchAction",
+    "entryPoint":{"method":"POST", "target":"http://actions.semantify.it/"},
+    "object":{
+      "@type":"Organisation"
+    },
+    "agent":{
+      "name-input":"required"
+    },
+    "result":{"@type": "Organisation"}
+  },
+  "realTarget": {
+    "url": "http://semantify.it/api/organisation/list/",
+    "method": "GET",
+    "header": {
+      "Content-type":"json"
+    }
+  },
+  "mapping":{
+    "input":{
+      "agent.name": {
+        "type": "header",
+        "path":"Authorization"
+      }
+    },
+    "output": {
+      "[].name": "[].name",
+      "[].employees[].username": "[].employee[].name",
+      "[].employees[].email": "[].employee[].email"
+    },
+      "$staticOutput":
+        {
+          "[].@type":"Organisation",
+          "[].employee[].@type":"Person"
+        }
+
+    }
+
+}
