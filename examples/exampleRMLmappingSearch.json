@@ -1,0 +1,10 @@
+{"@type":"SearchAction",
+  "entryPoint":{"method":"GET", "target":"http://actions.semantify.it/"},
+  "object":{
+    "@type":"Organisation"
+  },
+  "agent":{
+    "name":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OTUyNjY0M2NmMzE0NzE3ODkyNzNlOWUiLCJ1c2VybmFtZSI6InAuaGFldXNsZUBzdHVkZW50LnVpYmsuYWMuYXQiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE1NDQ4NzM1MTgsImlhdCI6MTUzOTY4OTUxOH0.tUio9pXDpjFxbjzx_V3fWtwrOuH4Qb2ncxC8Th-DHfk"
+  },
+  "result":{"@type": "Organisation"}
+}

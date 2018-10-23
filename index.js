@@ -1,6 +1,7 @@
 const express = require('express');
 const parser = require('body-parser');
 const mapper = require('./mapper.js');
+const mapper2 = require('./rmlMapper.js');
 const fs = require('fs'); //remove later
 
 const port=8082;
@@ -20,12 +21,13 @@ app.post('/mapping', (req, res) => {
 
     /* CHANGE */
     //mapFile=getMapfile(mapId) TODO
-    let rawdata = fs.readFileSync('semantify.json');
+   // let rawdata = fs.readFileSync('examples/semantifyJsonPath.json');
+    let rawdata = fs.readFileSync('examples/semantify.json');
     mapFile = JSON.parse(rawdata);
     /* CHANGE */
 
-    let response=mapper.map(req.body,mapFile, (response) => res.send(response));
-
+    mapper.map(req.body,mapFile, function(resp){ res.send(resp)});
+    //let response=mapper2.map(req.body,mapFile, (response) => res.send(response));
 
 });
 

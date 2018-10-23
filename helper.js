@@ -147,8 +147,21 @@ const checkForValidity = function(path,value,action) {
     }
 };
 
+const filtered_keys = (obj, filter,depth) => {
+    let key, keys = [];
+    for (key in obj)
+        if (obj.hasOwnProperty(key) && filter.test(key)){
+            let d = (key.match(filter) || []).length;
+            if(depth===d){
+                keys.push(key);
+            }
+        }
+
+    return keys
+};
+
 
 module.exports = {
-    flatten, unflatten, flattenRemove, createPropValueSpecFromString,checkForValidity
+    flatten, unflatten, flattenRemove, createPropValueSpecFromString,checkForValidity,filtered_keys
 };
 

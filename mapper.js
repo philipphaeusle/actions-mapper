@@ -1,7 +1,7 @@
 const helper = require('./helper.js');
 const querystring = require('querystring');
 const request = require('request');
-const objectMapper = require('object-mapper');
+const objectMapper = require('./object_mapper/object-mapper.js');
 
 function mapReverse(body, mapping,input) {
     if(typeof body !== "object"){
@@ -15,23 +15,21 @@ function mapReverse(body, mapping,input) {
         }
     }
 
-    //TODO:make static insertions
+
     let staticValues=mapping["$staticOutput"];
     let out=mapping.output;
 
-    out["[].name"]= [
-        {
-            "key": "[].name"
-        },
-        {
-            "key": "[i]@type",
-            transform: ()=> {return "Person"}
-        }
-    ];
+    //TODO:check why only in first element when array
+    Object.entries(staticValues).forEach(function(m){
+        out[m[0].toString()]= [
+            {
+                "key": m[0].toString(),
+                transform: ()=> {return m[1]}
+            }
+        ];
+    });
 
-
-
-let temp = objectMapper(body, out);
+    let temp = objectMapper(body, out);
     return temp;
 
 }
